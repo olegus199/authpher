@@ -1,13 +1,15 @@
-module github.com/39george/authpher/authgin
+module github.com/39george/authpher/sessions/ginsessions
 
 go 1.23.2
 
 require (
 	github.com/39george/authpher v0.0.0-20250120115909-fb2fcd39b15c
+	github.com/39george/scs_gin_adapter v0.1.2
 	github.com/gin-gonic/gin v1.10.0
 )
 
 require (
+	github.com/alexedwards/scs/v2 v2.8.0 // indirect
 	github.com/bytedance/sonic v1.11.6 // indirect
 	github.com/bytedance/sonic/loader v0.1.1 // indirect
 	github.com/cloudwego/base64x v0.1.4 // indirect
