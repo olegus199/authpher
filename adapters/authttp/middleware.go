@@ -11,7 +11,6 @@ import (
 )
 
 type ErrorHandler func(error)
-type Middleware func(http.Handler) http.Handler
 
 var (
 	errorHandlers []ErrorHandler
@@ -24,7 +23,7 @@ func RegisterErrorHandler(handler ErrorHandler) {
 	errorHandlers = append(errorHandlers, handler)
 }
 
-func Auth[P comparable, C any](backend authpher.AuthzBackend[P, C], store authpher.SessionStore) Middleware {
+func Auth[P comparable, C any](backend authpher.AuthzBackend[P, C], store authpher.SessionStore) func(http.Handler) http.Handler {
 	gob.Register(authpher.Data{})
 	dataKey := "user-login.data"
 	if backend == nil || store == nil {
@@ -44,7 +43,7 @@ func Auth[P comparable, C any](backend authpher.AuthzBackend[P, C], store authph
 	}
 }
 
-func PermissionRequired[P comparable, C any](permission P) Middleware {
+func PermissionRequired[P comparable, C any](permission P) func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			ctx := r.Context()
