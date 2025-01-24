@@ -59,7 +59,7 @@ func RequirePermission[P comparable, C any](
 		permission,
 	)
 	if err != nil {
-		return ErrInternal
+		return errors.Join(err, ErrInternal)
 	}
 	if !has {
 		return ErrForbidden
