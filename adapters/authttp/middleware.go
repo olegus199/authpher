@@ -37,7 +37,7 @@ func Auth[P comparable, C any](backend authpher.AuthzBackend[P, C], store authph
 				handleInternalError(w, err)
 				return
 			}
-			r = r.WithContext(context.WithValue(ctx, authpher.AuthContextString, &authSession))
+			r = r.WithContext(context.WithValue(ctx, authpher.AuthContextString, authSession))
 			next.ServeHTTP(w, r)
 		})
 	}
