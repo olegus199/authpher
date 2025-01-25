@@ -1,4 +1,4 @@
-module github.com/39george/authpher/authgin
+module github.com/39george/authpher/adapters/authgin
 
 go 1.23.2
 
