@@ -15,9 +15,9 @@ type GoSessions struct {
 
 func (gs GoSessions) Get(ctx context.Context, key string) authpher.Data {
 	d := gs.Store.Get(ctx, key)
-	switch d.(type) {
+	switch d := d.(type) {
 	case authpher.Data:
-		return d.(authpher.Data)
+		return d
 	default:
 		return authpher.Data{}
 	}
