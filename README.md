@@ -224,4 +224,5 @@ func runServer(permission string) (net.Addr, error) {
 	}
 	http.Serve(listener, muxChain)
 }
-```
+
+See [full mongodb example](https://github.com/39george/authpher/blob/main/examples/http/mongodb/main.go)
