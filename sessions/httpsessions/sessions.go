@@ -26,7 +26,7 @@ func (gs GoSessions) Set(ctx context.Context, k string, v authpher.Data) {
 	gs.Store.Put(ctx, k, v)
 }
 
-// Not possible in gin
+// Don't needed, as scs.SessionManager manages saving itself
 func (gs GoSessions) Save(ctx context.Context) {}
 
 func (gs GoSessions) Clear(ctx context.Context) {
