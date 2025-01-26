@@ -21,14 +21,14 @@ func Auth[P comparable, C any](backend authpher.AuthzBackend[P, C], store authph
 			c.AbortWithError(http.StatusInternalServerError, err)
 			return
 		}
-		c.Set(authpher.AuthContextString, &authSession)
+		c.Set(authpher.AuthContextString, authSession)
 		c.Next()
 	}
 }
 
 func PermissionRequired[P comparable, C any](permission P) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		authSession, err := authSessionFromGinContext[P, C](c)
+		authSession, err := AuthSessionFromGinContext[P, C](c)
 		if err != nil {
 			c.AbortWithError(http.StatusInternalServerError, err)
 			return
@@ -50,7 +50,7 @@ func PermissionRequired[P comparable, C any](permission P) gin.HandlerFunc {
 	}
 }
 
-func authSessionFromGinContext[P comparable, C any](
+func AuthSessionFromGinContext[P comparable, C any](
 	c *gin.Context,
 ) (*authpher.AuthSession[P, C], error) {
 	authSession, exists := c.Get(authpher.AuthContextString)
