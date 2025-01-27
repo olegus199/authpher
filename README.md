@@ -8,7 +8,11 @@ authpher
     </a>
 </div>
 
-![authpher logo](https://github.com/user-attachments/assets/af3e4b65-c3f9-4982-9265-c93a4871d224)
+<div align="center">
+	<img src="https://github.com/user-attachments/assets/af3e4b65-c3f9-4982-9265-c93a4871d224" width=500 />
+</div>
+
+
 
 # What is that?
 Authpher performs users identification, authentication, and authorization acting as middleware, and
